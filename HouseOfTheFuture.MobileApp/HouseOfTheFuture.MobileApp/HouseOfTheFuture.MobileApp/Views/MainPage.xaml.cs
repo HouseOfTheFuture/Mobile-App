@@ -13,6 +13,7 @@ namespace HouseOfTheFuture.MobileApp.Views
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = App.Locator.Main;
         }
     }
 }
