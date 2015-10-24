@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HouseOfTheFuture.MobileApp.App">
+  <Application.Resources>
+    <ResourceDictionary>
+
+      <Color x:Key="PageBackground">White</Color>
+      <Color x:Key="TitleColor">#827f80</Color>
+      <Color x:Key="NormalTextColor">#827f80</Color>
+
+      <Style x:Key="PageStyle" TargetType="Page">
+        <Setter Property="BackgroundColor" Value="{StaticResource PageBackground}"/>
+      </Style>
+
+      <Style x:Key="HeaderTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TitleColor}"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+      </Style>
+
+      <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NormalTextColor}"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+      </Style>
+
+      <Style x:Key="ErrorText" TargetType="Label">
+        <Setter Property="TextColor" Value="#ff0033"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+      </Style>
+      
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
