@@ -107,8 +107,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommunicationService.cs" />
-    <Compile Include="ICommunicationService.cs" />
+    <Compile Include="DiscoverService.cs" />
+    <Compile Include="IDiscoverService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\Services.rd.xml" />
   </ItemGroup>

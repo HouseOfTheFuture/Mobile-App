@@ -9,7 +9,7 @@ using Model;
 
 namespace Services
 {
-    public interface ICommunicationService
+    public interface IDiscoverService
     {
         Task<IEnumerable<TickTackDevice>> DiscoverDevices();
         Task ListenTo(TickTackDevice device);
