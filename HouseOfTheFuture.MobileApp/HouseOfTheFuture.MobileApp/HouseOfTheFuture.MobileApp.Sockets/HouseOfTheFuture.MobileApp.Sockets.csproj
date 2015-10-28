@@ -35,7 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="IMulticastSocket.cs" />
+    <Compile Include="DeviceDiscoverySettings.cs" />
+    <Compile Include="IDevice.cs" />
+    <Compile Include="IDeviceDiscoveryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

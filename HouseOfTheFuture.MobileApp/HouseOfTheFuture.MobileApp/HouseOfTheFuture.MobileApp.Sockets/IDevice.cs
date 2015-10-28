@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace HouseOfTheFuture.MobileApp.Sockets.iOS
+namespace HouseOfTheFuture.MobileApp.Sockets
 {
-    public class MulticastSocket : IMulticastSocket
+    public interface IDevice
     {
-
     }
 }
