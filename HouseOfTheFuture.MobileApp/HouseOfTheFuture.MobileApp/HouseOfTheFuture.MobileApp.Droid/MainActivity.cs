@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using HouseOfTheFuture.MobileApp.Common;
+using HouseOfTheFuture.MobileApp.Sockets;
+using HouseOfTheFuture.MobileApp.Sockets.Droid;
 
 namespace HouseOfTheFuture.MobileApp.Droid
 {
@@ -17,6 +20,9 @@ namespace HouseOfTheFuture.MobileApp.Droid
             base.OnCreate(bundle);
 
             Xamarin.Forms.Forms.Init(this, bundle);
+
+            ServiceResolver.Register<IDeviceDiscoveryService, DeviceDiscoveryService>();
+
             LoadApplication(new App());
         }
     }

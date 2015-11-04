@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using HouseOfTheFuture.MobileApp.Common;
+using HouseOfTheFuture.MobileApp.Sockets;
 
 namespace HouseOfTheFuture.MobileApp.ViewModel
 {
@@ -31,8 +33,9 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
 
         public RelayCommand ShowMessageCommand { get; }
 
-        private void ShowMessage()
+        private async void ShowMessage()
         {
+            var devices = (await ServiceResolver.Resolve<IDeviceDiscoveryService>().GetDevices()).ToList();
             Message = "Hello World";
         }
     }
