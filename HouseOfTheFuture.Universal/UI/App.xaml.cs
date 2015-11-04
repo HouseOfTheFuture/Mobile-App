@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace UI
+namespace InfoSupport.TickTack.App
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -40,12 +30,12 @@ namespace UI
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+//#if DEBUG
+//            if (System.Diagnostics.Debugger.IsAttached)
+//            {
+//                this.DebugSettings.EnableFrameRateCounter = true;
+//            }
+//#endif
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -64,7 +54,7 @@ namespace UI
                 }
 
                 // Place the frame in the current Window
-                Window.Current.Content = new MainPage(rootFrame);
+                Window.Current.Content = rootFrame;
             }
 
             if (rootFrame.Content == null)
@@ -72,7 +62,7 @@ namespace UI
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(AppShell), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

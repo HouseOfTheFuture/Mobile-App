@@ -1,8 +1,11 @@
 ﻿<Application
-    x:Class="UI.App"
+    x:Class="InfoSupport.TickTack.App.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UI"
     RequestedTheme="Light">
+    <Application.Resources>
+        <SolidColorBrush  x:Key="JustOneShadeOfGray"
+                          Color="LightSlateGray" />
+    </Application.Resources>
 
 </Application>

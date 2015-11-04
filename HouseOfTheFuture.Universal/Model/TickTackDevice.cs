@@ -9,7 +9,6 @@ namespace Model
 {
     public class TickTackDevice
     {
-        public string Name { get; set; }
-        public EndpointPair Endpoint { get; set; }
+        public MeterType Sensor { get; set; }
     }
 }

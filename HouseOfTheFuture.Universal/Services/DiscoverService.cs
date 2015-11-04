@@ -12,7 +12,7 @@ using Model;
 
 namespace Services
 {
-    public class CommunicationService : ICommunicationService
+    public class DiscoverService : IDiscoverService
     {
         //private const string MulticastAddress = "239.255.42.99";
         //private const string Port = "5321";
