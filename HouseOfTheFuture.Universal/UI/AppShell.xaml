@@ -12,7 +12,7 @@
 
     <Grid>
         <SplitView x:Name="SplitView"
-                   IsPaneOpen="False"
+                   IsPaneOpen="{Binding IsPaneOpen}"
                    CompactPaneLength="50"
                    OpenPaneLength="150"
                    PaneBackground="{StaticResource JustOneShadeOfGray}"
@@ -79,7 +79,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 VerticalAlignment="Top"
-                Click="HamburgerButton_Click" />
+                Command="{Binding ShowMenu}" />
     </Grid>
 </Page>
 
