@@ -28,8 +28,8 @@ namespace HouseOfTheFuture.MobileApp.Sockets
         public byte[] BroadcastRequestDevicesCommand { get; set; }
 
         public string BroadcastDeviceIdentifierCommand { get; set; }
+        
+        public static DeviceDiscoverySettings Default => _default ?? (_default = new DeviceDiscoverySettings("239.255.42.99", 5321, 10000, "TT_SEND_DEVICE_INFO", "TT_DEVICE_IDENTIFIER:"));
 
-
-        public static DeviceDiscoverySettings Default => _default ?? (_default = new DeviceDiscoverySettings("239.255.42.99", 5321, 20000, "TT_SEND_DEVICE_INFO", "TT_DEVICE_IDENTIFIER:"));
     }
 }

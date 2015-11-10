@@ -52,6 +52,8 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
         {
             IsBusy = true;
 
+            Devices.Clear();
+
             var devices = await _deviceDiscoveryService.DiscoverDevices();
 
             IsBusy = false;
