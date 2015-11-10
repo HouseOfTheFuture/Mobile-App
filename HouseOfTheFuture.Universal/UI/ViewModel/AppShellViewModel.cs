@@ -8,9 +8,15 @@ namespace InfoSupport.TickTack.App.ViewModel
 {
     public class AppShellViewModel : ViewModelBase
     {
-        public ObservableCollection<MenuItem> Menu { get; } = new ObservableCollection<MenuItem>();
-
         private bool _isPaneOpen;
+
+        public AppShellViewModel()
+        {
+            Menu.Add(new MenuItem {Glyph = "", Text = "Home", NavigationDestination = typeof (HomeView)});
+            Menu.Add(new MenuItem {Glyph = "", Text = "Discover", NavigationDestination = typeof (DiscoverView)});
+        }
+
+        public ObservableCollection<MenuItem> Menu { get; } = new ObservableCollection<MenuItem>();
 
         public bool IsPaneOpen
         {
@@ -23,11 +29,5 @@ namespace InfoSupport.TickTack.App.ViewModel
         }
 
         public ICommand ShowMenu => new RelayCommand(() => IsPaneOpen = !IsPaneOpen);
-
-        public AppShellViewModel()
-        {
-            Menu.Add(new MenuItem() { Glyph = "", Text = "Home", NavigationDestination = typeof(HomeView) });
-            Menu.Add(new MenuItem() { Glyph = "", Text = "Discover", NavigationDestination = typeof(DiscoverView) });
-        }
     }
 }
