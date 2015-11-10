@@ -11,19 +11,19 @@ namespace InfoSupport.TickTack.App.ViewModel
     {
         static ViewModelLocator()
         {
-            var container = new ContainerBuilder();
+            var builder = new ContainerBuilder();
 
             //register all services
-            container.RegisterAssemblyTypes(typeof (IDiscoverService).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof (IDiscoverService).GetTypeInfo().Assembly).AsImplementedInterfaces();
 
             //register all viewmodels
-            container
+            builder
                 .RegisterAssemblyTypes(typeof (ViewModelLocator).GetTypeInfo().Assembly)
                 .Where(t =>t.Name.EndsWith("ViewModel"))
                 .AsSelf();
 
-            var autofacServiceLocator = new AutofacServiceLocator(container.Build());
-            ServiceLocator.SetLocatorProvider(() => autofacServiceLocator);
+            var container = builder.Build();
+            ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container));
         }
 
         public static DiscoverViewModel Discover => ServiceLocator.Current.GetInstance<DiscoverViewModel>();
