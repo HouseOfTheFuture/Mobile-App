@@ -11,10 +11,11 @@ namespace Model
         {
             get
             {
-                var ipAddresses = NetworkInformation.GetHostNames().Where(name =>
-                    name.IPInformation != null &&
-                    (name.IPInformation.NetworkAdapter.IanaInterfaceType == 71 ||
-                     name.IPInformation.NetworkAdapter.IanaInterfaceType == 6)).Select(name => name.DisplayName);
+                var ipAddresses = NetworkInformation
+                    .GetHostNames()
+                    .Where(name => name.IPInformation != null
+                                   && (name.IPInformation.NetworkAdapter.IanaInterfaceType == 71 ||name.IPInformation.NetworkAdapter.IanaInterfaceType == 6))
+                    .Select(name => name.DisplayName);
 
                 return ipAddresses.Select(IPAddress.Parse);
             }
