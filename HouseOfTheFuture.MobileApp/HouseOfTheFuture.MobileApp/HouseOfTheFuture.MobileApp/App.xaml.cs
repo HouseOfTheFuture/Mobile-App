@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
 using HouseOfTheFuture.MobileApp.Common;
 using HouseOfTheFuture.MobileApp.Sockets;
 using HouseOfTheFuture.MobileApp.ViewModel;
@@ -17,21 +19,25 @@ namespace HouseOfTheFuture.MobileApp
         {
             InitializeComponent();
             ServiceResolver.Register(DeviceDiscoverySettings.Default);
-            this.MainPage = GetMainPage();
+
+            var nav = new NavigationService();
+            nav.Configure(ViewModelLocator.MainPage, typeof(MainPage));
+            nav.Configure(ViewModelLocator.DeviceSelectionPage, typeof(DeviceSelectionPage));
+            SimpleIoc.Default.Register<INavigationService>(() => nav);
+
+            var mainPage = new NavigationPage(new DeviceSelectionPage());
+
+            nav.Initialize(mainPage);
+
+            //SimpleIoc.Default.Register<INavigationService>(() => nav);
+
+            MainPage = mainPage;
         }
 
         private static ViewModelLocator _locator;
 
         public static ViewModelLocator Locator => _locator ?? (_locator = new ViewModelLocator());
-
-
-        public static Page GetMainPage()
-        {
-            return new DeviceSelectionPage();
-            //return new MainPage();
-        }
-
-
+        
         protected override void OnStart()
         {
             base.OnStart();

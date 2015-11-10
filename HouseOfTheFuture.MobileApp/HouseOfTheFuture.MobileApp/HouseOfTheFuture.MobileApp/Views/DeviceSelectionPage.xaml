@@ -4,8 +4,19 @@
              x:Class="HouseOfTheFuture.MobileApp.Views.DeviceSelectionPage">
   <ListView x:Name="deviceList"
             ItemsSource="{Binding Devices}"
+            SelectedItem="{Binding SelectedDeviceId}"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
             RefreshCommand="{Binding RefreshDevicesCommand}"
-            IsRefreshing="{Binding IsBusy, Mode=OneWay}"/>
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell Height="40">
+          <ViewCell.View>
+            <Label Text="{Binding}" Style="{StaticResource HeaderStyle}" VerticalOptions="Center"/>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
 </ContentPage>

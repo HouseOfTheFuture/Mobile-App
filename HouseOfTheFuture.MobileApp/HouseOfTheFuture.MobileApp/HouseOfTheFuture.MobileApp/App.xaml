@@ -22,8 +22,7 @@
       
       <Style x:Key="HeaderStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NormalTextColor}"/>
-        <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="Verdana"/>
       </Style>
 

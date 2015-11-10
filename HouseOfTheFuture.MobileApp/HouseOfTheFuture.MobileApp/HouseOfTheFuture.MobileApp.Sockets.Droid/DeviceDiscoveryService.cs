@@ -47,7 +47,7 @@ namespace HouseOfTheFuture.MobileApp.Sockets.Droid
             var devices = new List<string>();
 
 
-            Task.Run(async () =>
+            Task.Run(() =>
             {
                 var isCompleted = false;
 
@@ -62,7 +62,6 @@ namespace HouseOfTheFuture.MobileApp.Sockets.Droid
                         var be = new byte[57];
                         try
                         {
-                            await Task.Delay(1000);
                             _listeningSocket.ReceiveTimeout = 1000;
                             _listeningSocket.Receive(be);
                             var str = Encoding.UTF8.GetString(be, 0, be.Length);

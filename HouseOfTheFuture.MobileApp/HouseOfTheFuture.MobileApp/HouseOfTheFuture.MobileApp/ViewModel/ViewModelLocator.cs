@@ -10,6 +10,9 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
 {
     public class ViewModelLocator
     {
+        public const string MainPage = "MainPage";
+        public const string DeviceSelectionPage = "DeviceSelectionPage";
+
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);

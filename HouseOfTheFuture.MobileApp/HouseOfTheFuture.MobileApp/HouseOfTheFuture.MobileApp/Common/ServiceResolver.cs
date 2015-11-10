@@ -31,5 +31,15 @@ namespace HouseOfTheFuture.MobileApp.Common
         {
             return _container.GetInstance<TInterface>();
         }
+
+        public static TInterface Resolve<TInterface>(TInterface type) where TInterface : class
+        {
+            return _container.GetInstance<TInterface>();
+        }
+
+        public static Boolean IsRegistered<TInterface>(TInterface type) where TInterface : class
+        {
+            return _container.IsRegistered<TInterface>();
+        }
     }
 }

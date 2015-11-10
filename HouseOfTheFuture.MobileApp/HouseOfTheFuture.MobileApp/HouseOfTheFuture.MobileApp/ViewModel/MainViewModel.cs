@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using HouseOfTheFuture.MobileApp.Common;
 using HouseOfTheFuture.MobileApp.Sockets;
 
@@ -12,8 +13,13 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        public MainViewModel()
+        private INavigationService _navigationService;
+
+        public MainViewModel(INavigationService navigationService)
         {
+            if (navigationService == null) throw new ArgumentNullException(nameof(navigationService));
+            _navigationService = navigationService;
+
             ShowMessageCommand = new RelayCommand(ShowMessage);
         }
 

@@ -10,10 +10,11 @@ namespace HouseOfTheFuture.MobileApp.Views
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(string deviceId)
         {
             InitializeComponent();
             BindingContext = App.Locator.Main;
+
         }
     }
 }
