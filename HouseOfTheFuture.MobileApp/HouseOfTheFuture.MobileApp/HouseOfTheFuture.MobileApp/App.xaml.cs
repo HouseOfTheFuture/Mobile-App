@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HouseOfTheFuture.MobileApp.Common;
+using HouseOfTheFuture.MobileApp.Sockets;
 using HouseOfTheFuture.MobileApp.ViewModel;
 using HouseOfTheFuture.MobileApp.Views;
 using Xamarin.Forms;
@@ -15,6 +17,7 @@ namespace HouseOfTheFuture.MobileApp
         {
             InitializeComponent();
             this.MainPage = GetMainPage();
+            ServiceResolver.Register(DeviceDiscoverySettings.Default);
         }
 
         private static ViewModelLocator _locator;
@@ -24,7 +27,8 @@ namespace HouseOfTheFuture.MobileApp
 
         public static Page GetMainPage()
         {
-            return new MainPage();
+            return new DeviceSelectionPage();
+            //return new MainPage();
         }
 
 

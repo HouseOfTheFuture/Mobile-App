@@ -121,6 +121,14 @@
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HouseOfTheFuture.MobileApp.Sockets.Droid\HouseOfTheFuture.MobileApp.Sockets.Droid.csproj">
+      <Project>{9270c2d1-027c-425d-a533-6c59ae34d048}</Project>
+      <Name>HouseOfTheFuture.MobileApp.Sockets.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseOfTheFuture.MobileApp.Sockets\HouseOfTheFuture.MobileApp.Sockets.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>HouseOfTheFuture.MobileApp.Sockets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HouseOfTheFuture.MobileApp\HouseOfTheFuture.MobileApp.csproj">
       <Name>HouseOfTheFuture.MobileApp</Name>
     </ProjectReference>

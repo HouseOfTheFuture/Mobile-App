@@ -26,6 +26,8 @@ namespace HouseOfTheFuture.MobileApp.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::HouseOfTheFuture.MobileApp.Sockets.Droid.Resource.String.ApplicationName = global::HouseOfTheFuture.MobileApp.Droid.Resource.String.ApplicationName;
+			global::HouseOfTheFuture.MobileApp.Sockets.Droid.Resource.String.Hello = global::HouseOfTheFuture.MobileApp.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::HouseOfTheFuture.MobileApp.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::HouseOfTheFuture.MobileApp.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::HouseOfTheFuture.MobileApp.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;

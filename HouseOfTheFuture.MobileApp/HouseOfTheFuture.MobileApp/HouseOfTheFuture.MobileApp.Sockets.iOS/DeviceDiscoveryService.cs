@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,7 +7,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HouseOfTheFuture.MobileApp.Sockets.Droid
+namespace HouseOfTheFuture.MobileApp.Sockets.iOS
 {
     public class DeviceDiscoveryService : IDeviceDiscoveryService
     {
@@ -58,7 +58,7 @@ namespace HouseOfTheFuture.MobileApp.Sockets.Droid
 
             return devices;
         }
-        
+
         public void Dispose()
         {
             Dispose(true);
