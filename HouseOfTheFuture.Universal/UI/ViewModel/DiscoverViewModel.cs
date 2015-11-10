@@ -17,11 +17,12 @@ namespace InfoSupport.TickTack.App.ViewModel
         private readonly IDiscoverService _discoverService;
         public ObservableCollection<TickTackDevice> Devices { get; } = new ObservableCollection<TickTackDevice>();
 
-        public ICommand DiscoverDevicesCommand => new RelayCommand(DiscoverDevices);
+        public ICommand DiscoverDevicesCommand { get; private set; }
 
         private void DiscoverDevices()
         {
-            _discoverService.DiscoverDevices();
+            Devices.Clear();
+            _discoverService.DiscoverDevices(async dev => await UIThread.ExecuteAsync(() => Devices.Add(dev)));
         }
 
         /// <summary>
@@ -29,13 +30,14 @@ namespace InfoSupport.TickTack.App.ViewModel
         /// </summary>
         public DiscoverViewModel(IDiscoverService discoverService)
         {
+            DiscoverDevicesCommand = new RelayCommand(DiscoverDevices);
             _discoverService = discoverService;
             if (IsInDesignMode)
             {
-                Devices.Add(new TickTackDevice() {Sensor = MeterType.Electricity});
-                Devices.Add(new TickTackDevice() {Sensor = MeterType.Electricity});
-                Devices.Add(new TickTackDevice() {Sensor = MeterType.Electricity});
-                Devices.Add(new TickTackDevice() {Sensor = MeterType.Electricity});
+                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
+                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
+                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
+                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
             }
         }
     }
