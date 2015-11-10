@@ -37,21 +37,5 @@ namespace InfoSupport.TickTack.App
             }
         }
 
-        private void SplitViewOpener_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-        {
-            if (e.Cumulative.Translation.X > 50)
-            {
-                SplitView.IsPaneOpen = true;
-            }
-        }
-
-        private void SplitViewPane_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-        {
-            if (e.Cumulative.Translation.X < -50)
-            {
-                SplitView.IsPaneOpen = false;
-            }
-        }
-
     }
 }
