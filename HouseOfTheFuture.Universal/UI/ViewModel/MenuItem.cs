@@ -36,9 +36,6 @@ namespace InfoSupport.TickTack.App.ViewModel
             set { Set(ref _navigationDestination, value); }
         }
 
-        public bool IsNavigation
-        {
-            get { return _navigationDestination != null; }
-        }
+        public bool IsNavigation => _navigationDestination != null;
     }
 }

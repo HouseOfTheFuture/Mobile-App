@@ -11,19 +11,18 @@
     </Page.DataContext>
 
     <Grid>
-        <SplitView x:Name="SplitView"
-                   IsPaneOpen="False"
-                   CompactPaneLength="50"
-                   OpenPaneLength="150"
-                   PaneBackground="{StaticResource JustOneShadeOfGray}"
-                   DisplayMode="Overlay">
+        <SplitView
+            IsPaneOpen="{Binding IsPaneOpen}"
+            CompactPaneLength="50"
+            OpenPaneLength="150"
+            PaneBackground="{StaticResource JustOneShadeOfGray}"
+            DisplayMode="Overlay">
             <SplitView.Pane>
-                <Grid x:Name="SplitViewPane"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Stretch"
-                      ManipulationMode="TranslateX"
-                      ManipulationCompleted="SplitViewPane_ManipulationCompleted"
-                      Background="{StaticResource JustOneShadeOfGray}">
+                <Grid
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    ManipulationMode="TranslateX"
+                    Background="{StaticResource JustOneShadeOfGray}">
                     <ListView ItemsSource="{Binding Menu}"
                               SelectionChanged="Menu_SelectionChanged"
                               Margin="0 48 0 0"
@@ -62,24 +61,21 @@
                     </Frame>
                     <!-- SplitViewOpener -->
                     <Grid ManipulationMode="TranslateX"
-                          ManipulationCompleted="SplitViewOpener_ManipulationCompleted"
                           Width="150"
                           Background="Transparent"
                           HorizontalAlignment="Left"
-                          VerticalAlignment="Stretch">
-                    </Grid>
+                          VerticalAlignment="Stretch" />
                 </Grid>
             </SplitView.Content>
         </SplitView>
-        <Button x:Name="HamburgerButton"
-                FontFamily="Segoe MDL2 Assets"
-                Content="&#xE700;"
-                Width="50"
-                Height="50"
-                Background="Transparent"
-                BorderThickness="0"
-                VerticalAlignment="Top"
-                Click="HamburgerButton_Click" />
+        <Button
+            FontFamily="Segoe MDL2 Assets"
+            Content="&#xE700;"
+            Width="50"
+            Height="50"
+            Background="Transparent"
+            BorderThickness="0"
+            VerticalAlignment="Top"
+            Command="{Binding ShowMenu}" />
     </Grid>
 </Page>
-
