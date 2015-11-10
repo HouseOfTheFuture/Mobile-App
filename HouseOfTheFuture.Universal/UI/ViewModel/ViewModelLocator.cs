@@ -20,6 +20,7 @@ namespace InfoSupport.TickTack.App.ViewModel
             builder
                 .RegisterAssemblyTypes(typeof (ViewModelLocator).GetTypeInfo().Assembly)
                 .Where(t =>t.Name.EndsWith("ViewModel"))
+                .SingleInstance()
                 .AsSelf();
 
             var container = builder.Build();
