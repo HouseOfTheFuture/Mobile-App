@@ -53,9 +53,5 @@ namespace InfoSupport.TickTack.App
             }
         }
 
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
-        {
-            SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
-        }
     }
 }
