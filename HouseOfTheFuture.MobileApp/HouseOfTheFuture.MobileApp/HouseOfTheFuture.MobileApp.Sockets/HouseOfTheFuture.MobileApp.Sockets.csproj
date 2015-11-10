@@ -35,10 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Device.cs" />
     <Compile Include="DeviceDiscoverySettings.cs" />
     <Compile Include="DeviceFoundEventArgs.cs" />
-    <Compile Include="IDevice.cs" />
     <Compile Include="IDeviceDiscoveryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

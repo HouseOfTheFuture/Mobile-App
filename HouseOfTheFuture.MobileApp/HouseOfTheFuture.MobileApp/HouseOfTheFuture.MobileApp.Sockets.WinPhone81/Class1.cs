@@ -16,7 +16,7 @@ namespace HouseOfTheFuture.MobileApp.Sockets.WinPhone81
 
         }
 
-        public Task<IEnumerable<IDevice>> DiscoverDevices()
+        public Task<IEnumerable<string>> DiscoverDevices()
         {
             throw new NotImplementedException();
         }

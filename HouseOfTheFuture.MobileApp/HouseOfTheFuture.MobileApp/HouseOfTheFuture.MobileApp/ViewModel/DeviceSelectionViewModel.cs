@@ -19,18 +19,18 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
         public DeviceSelectionViewModel(IDeviceDiscoveryService deviceDiscoveryService)
         {
             RefreshDevicesCommand = new RelayCommand(RefreshDevices);
-            Devices = new ObservableCollection<IDevice>();
+            Devices = new ObservableCollection<string>();
 
             _deviceDiscoveryService = deviceDiscoveryService;
             _deviceDiscoveryService.DeviceFound += DeviceDiscoveryServiceOnDeviceFound;
         }
 
-        private void DeviceDiscoveryServiceOnDeviceFound(object sender, EventArgs eventArgs)
+        private void DeviceDiscoveryServiceOnDeviceFound(object sender, DeviceFoundEventArgs es)
         {
-            Debug.WriteLine("Device found");
+            Devices.Add(es.DeviceIdentifier);
         }
 
-        public ObservableCollection<IDevice> Devices { get; set; }
+        public ObservableCollection<string> Devices { get; set; }
         
         public RelayCommand RefreshDevicesCommand { get; set; }
 

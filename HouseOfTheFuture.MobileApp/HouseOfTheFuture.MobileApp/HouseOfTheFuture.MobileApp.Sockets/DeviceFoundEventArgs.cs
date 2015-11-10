@@ -8,6 +8,6 @@ namespace HouseOfTheFuture.MobileApp.Sockets
 {
     public class DeviceFoundEventArgs : EventArgs
     {
-        public IDevice Device { get; set; }
+        public string DeviceIdentifier { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace HouseOfTheFuture.MobileApp.Sockets
     {
 
         event EventHandler<DeviceFoundEventArgs> DeviceFound;
-        Task<IEnumerable<IDevice>> DiscoverDevices();
+        Task<IEnumerable<string>> DiscoverDevices();
     }
 }

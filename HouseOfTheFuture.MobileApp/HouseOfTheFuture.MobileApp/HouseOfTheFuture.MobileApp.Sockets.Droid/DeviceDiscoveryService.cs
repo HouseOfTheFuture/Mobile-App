@@ -38,13 +38,13 @@ namespace HouseOfTheFuture.MobileApp.Sockets.Droid
 
         public event EventHandler<DeviceFoundEventArgs> DeviceFound;
 
-        public Task<IEnumerable<IDevice>> DiscoverDevices()
+        public Task<IEnumerable<string>> DiscoverDevices()
         {
             _multicastSocket.Send(_settings.BroadcastRequestDevicesCommand);
 
-            var tcs = new TaskCompletionSource<IEnumerable<IDevice>>();
-            
-            var devices = new List<IDevice>();
+            var tcs = new TaskCompletionSource<IEnumerable<string>>();
+
+            var devices = new List<string>();
 
 
             Task.Run(async () =>
@@ -59,16 +59,19 @@ namespace HouseOfTheFuture.MobileApp.Sockets.Droid
                 {
                     while (!isCompleted)
                     {
-                        var be = new byte[1024];
+                        var be = new byte[57];
                         try
                         {
                             await Task.Delay(1000);
                             _listeningSocket.ReceiveTimeout = 1000;
                             _listeningSocket.Receive(be);
                             var str = Encoding.UTF8.GetString(be, 0, be.Length);
-                            var device = new Device(Guid.NewGuid(), str, "0.0.0.0");
-                            devices.Add(device);
-                            DeviceFound?.Invoke(this, new DeviceFoundEventArgs() { Device = device });
+                            if (!string.IsNullOrWhiteSpace(str) && str.StartsWith(_settings.BroadcastDeviceIdentifierCommand))
+                            {
+                                var deviceIdentifier = str.Substring(_settings.BroadcastDeviceIdentifierCommand.Length);
+                                devices.Add(deviceIdentifier);
+                                DeviceFound?.Invoke(this, new DeviceFoundEventArgs() { DeviceIdentifier = deviceIdentifier });
+                            }
                         }
                         catch
                         {

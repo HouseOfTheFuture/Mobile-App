@@ -7,14 +7,5 @@
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
             RefreshCommand="{Binding RefreshDevicesCommand}"
-            IsRefreshing="{Binding IsBusy, Mode=OneWay}">
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <StackLayout>
-          <Label Text="{Binding Name}" Style="{StaticResource HeaderStyle}"/>
-          <Label Text="{Binding Address}"></Label>
-        </StackLayout>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-  </ListView>
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"/>
 </ContentPage>

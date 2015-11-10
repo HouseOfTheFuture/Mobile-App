@@ -10,12 +10,13 @@ namespace HouseOfTheFuture.MobileApp.Sockets
     {
         private static DeviceDiscoverySettings _default;
 
-        public DeviceDiscoverySettings(string broadcastIpAddress, int port, int broadcastWaitTimeout, string broadcastRequestDevicesCommand)
+        public DeviceDiscoverySettings(string broadcastIpAddress, int port, int broadcastWaitTimeout, string broadcastRequestDevicesCommand, string broadcastDeviceIdentifierCommand)
         {
             BroadcastIpAddress = broadcastIpAddress;
             BroadcastPort = port;
             BroadcastWaitTimeout = broadcastWaitTimeout;
             BroadcastRequestDevicesCommand = Encoding.UTF8.GetBytes(broadcastRequestDevicesCommand);
+            BroadcastDeviceIdentifierCommand = broadcastDeviceIdentifierCommand;
         }
 
         public string BroadcastIpAddress { get; set; }
@@ -26,7 +27,9 @@ namespace HouseOfTheFuture.MobileApp.Sockets
 
         public byte[] BroadcastRequestDevicesCommand { get; set; }
 
+        public string BroadcastDeviceIdentifierCommand { get; set; }
 
-        public static DeviceDiscoverySettings Default => _default ?? (_default = new DeviceDiscoverySettings("239.255.42.99", 5321, 20000, "===TICK_TACK_SEND_DEVICE_INFO==="));
+
+        public static DeviceDiscoverySettings Default => _default ?? (_default = new DeviceDiscoverySettings("239.255.42.99", 5321, 20000, "TT_SEND_DEVICE_INFO", "TT_DEVICE_IDENTIFIER:"));
     }
 }
