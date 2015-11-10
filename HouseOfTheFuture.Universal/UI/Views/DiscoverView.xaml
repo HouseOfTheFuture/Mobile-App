@@ -8,12 +8,17 @@
     DataContext="{Binding Source={StaticResource Locator},  Path=Discover}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
         <TextBlock FontSize="20" HorizontalAlignment="Center">Hello from Discovery</TextBlock>
-        <Button Command="{Binding DiscoverDevicesCommand}"  HorizontalAlignment="Center">Discover</Button>
-        <ListView ItemsSource="{Binding Devices}" >
+        <Button Grid.Row="1"   Command="{Binding DiscoverDevicesCommand}"  HorizontalAlignment="Center">Discover</Button>
+        <ListView Grid.Row="2" ItemsSource="{Binding Devices}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Sensor}"></TextBlock>
+                    <TextBlock Text="{Binding Id}"></TextBlock>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

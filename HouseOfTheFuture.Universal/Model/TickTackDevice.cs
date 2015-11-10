@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Networking;
-
-namespace Model
+﻿namespace Model
 {
     public class TickTackDevice
     {
-        public MeterType Sensor { get; set; }
+        public string Id { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Reflection;
 using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using Microsoft.Practices.ServiceLocation;
+using Model;
 using Services;
 
 namespace InfoSupport.TickTack.App.ViewModel
@@ -15,6 +16,7 @@ namespace InfoSupport.TickTack.App.ViewModel
 
             //register all services
             builder.RegisterAssemblyTypes(typeof (IDiscoverService).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof (INetworkInterface).GetTypeInfo().Assembly).AsImplementedInterfaces();
 
             //register all viewmodels
             builder
