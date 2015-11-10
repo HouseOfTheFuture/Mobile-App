@@ -27,7 +27,8 @@ namespace HouseOfTheFuture.MobileApp
 
         public static Page GetMainPage()
         {
-            return new MainPage();
+            return new DeviceSelectionPage();
+            //return new MainPage();
         }
 
 

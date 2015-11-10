@@ -14,11 +14,18 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<DeviceSelectionViewModel>();
         }
 
         /// <summary>
-        /// Gets the Main property.
+        /// Gets the Main ViewModel.
         /// </summary>
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        /// <summary>
+        /// Gets the DeviceSelection ViewModel
+        /// </summary>
+        public DeviceSelectionViewModel DeviceSelection
+            => ServiceLocator.Current.GetInstance<DeviceSelectionViewModel>();
     }
 }

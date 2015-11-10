@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HouseOfTheFuture.MobileApp.Views.DeviceSelectionPage">
+  <ListView x:Name="deviceList"
+            ItemsSource="{Binding Devices}"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshDevicesCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <StackLayout>
+          <Label Text="{Binding Name}" Style="{StaticResource HeaderStyle}"/>
+          <Label Text="{Binding Address}"></Label>
+        </StackLayout>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

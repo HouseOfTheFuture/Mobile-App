@@ -5,9 +5,10 @@
   <Application.Resources>
     <ResourceDictionary>
 
-      <Color x:Key="PageBackground">White</Color>
-      <Color x:Key="TitleColor">#827f80</Color>
-      <Color x:Key="NormalTextColor">#827f80</Color>
+      <Color x:Key="PageBackground">Black</Color>
+      <Color x:Key="TitleColor">#E5E0E2</Color>
+      <Color x:Key="NormalTextColor">#E5E0E2</Color>
+      <Color x:Key="DarkerTextColor">#827f80</Color>
 
       <Style x:Key="PageStyle" TargetType="Page">
         <Setter Property="BackgroundColor" Value="{StaticResource PageBackground}"/>
@@ -18,9 +19,17 @@
         <Setter Property="FontSize" Value="22"/>
         <Setter Property="FontFamily" Value="Verdana"/>
       </Style>
+      
+      <Style x:Key="HeaderStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NormalTextColor}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+      </Style>
 
       <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource NormalTextColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource DarkerTextColor}"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="Verdana"/>
       </Style>
 
