@@ -1,7 +1,5 @@
 ﻿using System.Linq;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 using InfoSupport.TickTack.App.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -9,33 +7,29 @@ using InfoSupport.TickTack.App.ViewModel;
 namespace InfoSupport.TickTack.App
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    ///     An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class AppShell : Page
     {
         public AppShell()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void Menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count > 0)
+            if (e.AddedItems.Count <= 0) return;
+            var menuItem = e.AddedItems.First() as MenuItem;
+            if (menuItem == null) return;
+
+            if (menuItem.IsNavigation)
             {
-                var menuItem = e.AddedItems.First() as MenuItem;
-                if (menuItem != null)
-                {
-                    if (menuItem.IsNavigation)
-                    {
-                        SplitViewFrame.Navigate(menuItem.NavigationDestination);
-                    }
-                    else
-                    {
-                        menuItem.Command.Execute(null);
-                    }
-                }
+                SplitViewFrame.Navigate(menuItem.NavigationDestination);
+            }
+            else
+            {
+                menuItem.Command.Execute(null);
             }
         }
-
     }
 }

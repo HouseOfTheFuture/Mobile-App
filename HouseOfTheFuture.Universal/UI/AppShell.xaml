@@ -11,18 +11,18 @@
     </Page.DataContext>
 
     <Grid>
-        <SplitView x:Name="SplitView"
-                   IsPaneOpen="{Binding IsPaneOpen}"
-                   CompactPaneLength="50"
-                   OpenPaneLength="150"
-                   PaneBackground="{StaticResource JustOneShadeOfGray}"
-                   DisplayMode="Overlay">
+        <SplitView
+            IsPaneOpen="{Binding IsPaneOpen}"
+            CompactPaneLength="50"
+            OpenPaneLength="150"
+            PaneBackground="{StaticResource JustOneShadeOfGray}"
+            DisplayMode="Overlay">
             <SplitView.Pane>
-                <Grid x:Name="SplitViewPane"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Stretch"
-                      ManipulationMode="TranslateX"
-                      Background="{StaticResource JustOneShadeOfGray}">
+                <Grid
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    ManipulationMode="TranslateX"
+                    Background="{StaticResource JustOneShadeOfGray}">
                     <ListView ItemsSource="{Binding Menu}"
                               SelectionChanged="Menu_SelectionChanged"
                               Margin="0 48 0 0"
