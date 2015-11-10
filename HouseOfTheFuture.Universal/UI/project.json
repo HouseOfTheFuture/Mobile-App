@@ -1,5 +1,7 @@
 ﻿{
   "dependencies": {
+    "Autofac": "3.5.2",
+    "Autofac.Extras.CommonServiceLocator": "3.2.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "MvvmLight": "5.2.0"
   },

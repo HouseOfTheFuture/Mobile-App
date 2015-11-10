@@ -27,6 +27,7 @@ namespace InfoSupport.TickTack.App
             {
                 menuItem.Command.Execute(null);
             }
+            ViewModelLocator.AppShell.IsPaneOpen = false;
         }
     }
 }

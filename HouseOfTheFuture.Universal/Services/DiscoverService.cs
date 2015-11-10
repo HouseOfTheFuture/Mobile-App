@@ -19,7 +19,7 @@ namespace Services
 
         public Task<IEnumerable<TickTackDevice>> DiscoverDevices()
         {
-            return new Task<IEnumerable<TickTackDevice>>(() => new List<TickTackDevice>());
+            return Task.FromResult(new List<TickTackDevice>().AsEnumerable());
         }
 
         public Task ListenTo(TickTackDevice device)

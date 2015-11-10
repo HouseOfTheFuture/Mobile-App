@@ -21,10 +21,9 @@ namespace InfoSupport.TickTack.App.ViewModel
         public bool IsPaneOpen
         {
             get { return _isPaneOpen; }
-            private set
+            set
             {
-                _isPaneOpen = value;
-                RaisePropertyChanged();
+                Set(() => IsPaneOpen, ref _isPaneOpen, value);
             }
         }
 
