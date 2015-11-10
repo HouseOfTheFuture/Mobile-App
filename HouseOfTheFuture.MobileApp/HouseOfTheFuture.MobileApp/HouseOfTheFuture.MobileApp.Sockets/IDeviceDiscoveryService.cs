@@ -7,6 +7,8 @@ namespace HouseOfTheFuture.MobileApp.Sockets
 {
     public interface IDeviceDiscoveryService : IDisposable
     {
-        Task<IEnumerable<IDevice>> GetDevices();
+
+        event EventHandler<DeviceFoundEventArgs> DeviceFound;
+        Task<IEnumerable<IDevice>> DiscoverDevices();
     }
 }

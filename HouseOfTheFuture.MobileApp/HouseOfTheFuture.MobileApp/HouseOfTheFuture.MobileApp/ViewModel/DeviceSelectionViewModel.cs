@@ -1,34 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using HouseOfTheFuture.MobileApp.Common;
 using HouseOfTheFuture.MobileApp.Sockets;
 
 namespace HouseOfTheFuture.MobileApp.ViewModel
 {
     public class DeviceSelectionViewModel : ViewModelBase
     {
-        public DeviceSelectionViewModel()
+        private IDeviceDiscoveryService _deviceDiscoveryService;
+        public DeviceSelectionViewModel(IDeviceDiscoveryService deviceDiscoveryService)
         {
             RefreshDevicesCommand = new RelayCommand(RefreshDevices);
+            Devices = new ObservableCollection<IDevice>();
+
+            _deviceDiscoveryService = deviceDiscoveryService;
+            _deviceDiscoveryService.DeviceFound += DeviceDiscoveryServiceOnDeviceFound;
         }
 
-        private ObservableCollection<IDevice> _devices = new ObservableCollection<IDevice>();
-        public ObservableCollection<IDevice> Devices
+        private void DeviceDiscoveryServiceOnDeviceFound(object sender, EventArgs eventArgs)
         {
-            get { return _devices; }
-            set
-            {
-                _devices = value;
-                RaisePropertyChanged();
-            }
+            Debug.WriteLine("Device found");
         }
 
+        public ObservableCollection<IDevice> Devices { get; set; }
+        
         public RelayCommand RefreshDevicesCommand { get; set; }
 
         private Boolean _isBusy;
@@ -49,10 +52,7 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
         {
             IsBusy = true;
 
-            await Task.Delay(2000);
-
-            Devices.Add(new Device(Guid.NewGuid(),
-                        Convert.ToBase64String(Encoding.UTF8.GetBytes(DateTime.UtcNow.Ticks.ToString())), "0.0.0.0"));
+            var devices = await _deviceDiscoveryService.DiscoverDevices();
 
             IsBusy = false;
         }

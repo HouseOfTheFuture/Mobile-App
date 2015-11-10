@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HouseOfTheFuture.MobileApp.Sockets.iOS
@@ -12,10 +11,10 @@ namespace HouseOfTheFuture.MobileApp.Sockets.iOS
     public class DeviceDiscoveryService : IDeviceDiscoveryService
     {
         private readonly IPAddress _broadcastIp;
-        private IPEndPoint _endpoint;
+        private readonly IPEndPoint _endpoint;
+        private readonly Socket _listeningSocket;
         private Socket _multicastSocket;
-        private Socket _listeningSocket;
-        private DeviceDiscoverySettings _settings;
+        private readonly DeviceDiscoverySettings _settings;
 
         public DeviceDiscoveryService(DeviceDiscoverySettings settings)
         {
@@ -23,40 +22,61 @@ namespace HouseOfTheFuture.MobileApp.Sockets.iOS
             _endpoint = new IPEndPoint(_broadcastIp, settings.BroadcastPort);
 
             _multicastSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            _multicastSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, new MulticastOption(_broadcastIp));
+            _multicastSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership,
+                new MulticastOption(_broadcastIp));
             _multicastSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.MulticastTimeToLive, 2);
             _multicastSocket.Connect(_endpoint);
 
             _listeningSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            IPEndPoint receiveEndpoint = new IPEndPoint(IPAddress.Any, settings.BroadcastPort);
+            var receiveEndpoint = new IPEndPoint(IPAddress.Any, settings.BroadcastPort);
             _listeningSocket.Bind(receiveEndpoint);
-            _listeningSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, new MulticastOption(_broadcastIp, IPAddress.Any));
+            _listeningSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership,
+                new MulticastOption(_broadcastIp, IPAddress.Any));
 
             _settings = settings;
         }
 
-        public async Task<IEnumerable<IDevice>> GetDevices()
+        public event EventHandler<DeviceFoundEventArgs> DeviceFound;
+
+        public Task<IEnumerable<IDevice>> DiscoverDevices()
         {
             _multicastSocket.Send(_settings.BroadcastRequestDevicesCommand);
 
+            var tcs = new TaskCompletionSource<IEnumerable<IDevice>>();
+
+            //var ct = new CancellationTokenSource();
             var devices = new List<IDevice>();
+
 
             Task.Run(() =>
             {
-                while (true)
-                {
-                    byte[] be = new byte[1024];
-                    try
-                    {
-                        _listeningSocket.Receive(be);
-                    }
-                    catch { }
-                    string str = Encoding.UTF8.GetString(be, 0, be.Length);
-                    devices.Add(new Device(Guid.NewGuid(), str, "0.0.0.0"));
-                }
-            }).Wait(10000);
+                var isCompleted = false;
 
-            return devices;
+                using (var t = new Timer(state =>
+                {
+                    isCompleted = true;
+                    tcs.SetResult(devices);
+                }, null, TimeSpan.FromMilliseconds(_settings.BroadcastWaitTimeout),
+                    TimeSpan.FromMilliseconds(_settings.BroadcastWaitTimeout)))
+                {
+                    while (!isCompleted)
+                    {
+                        var be = new byte[1024];
+                        try
+                        {
+                            _listeningSocket.Receive(be);
+                        }
+                        catch
+                        {
+                        }
+                        var str = Encoding.UTF8.GetString(be, 0, be.Length);
+                        var device = new Device(Guid.NewGuid(), str, "0.0.0.0");
+                        devices.Add(device);
+                        DeviceFound?.Invoke(this, new DeviceFoundEventArgs() {Device = device});
+                    }
+                }
+            });
+            return tcs.Task;
         }
 
         public void Dispose()

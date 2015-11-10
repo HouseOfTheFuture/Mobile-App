@@ -35,7 +35,6 @@ namespace HouseOfTheFuture.MobileApp.ViewModel
 
         private async void ShowMessage()
         {
-            var devices = (await ServiceResolver.Resolve<IDeviceDiscoveryService>().GetDevices()).ToList();
             Message = "Hello World";
         }
     }

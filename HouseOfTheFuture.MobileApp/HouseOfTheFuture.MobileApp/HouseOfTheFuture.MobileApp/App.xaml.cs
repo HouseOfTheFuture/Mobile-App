@@ -16,8 +16,8 @@ namespace HouseOfTheFuture.MobileApp
         public App()
         {
             InitializeComponent();
-            this.MainPage = GetMainPage();
             ServiceResolver.Register(DeviceDiscoverySettings.Default);
+            this.MainPage = GetMainPage();
         }
 
         private static ViewModelLocator _locator;
