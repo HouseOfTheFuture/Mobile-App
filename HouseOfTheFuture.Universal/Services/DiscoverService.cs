@@ -23,6 +23,7 @@ namespace Services
             _deviceFoundCallback = deviceFoundCallback;
             await ListenForTack();
             await SendTick();
+            //todo: send complete list
             return new List<TickTackDevice>().AsEnumerable();
         }
 
