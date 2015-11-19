@@ -11,6 +11,6 @@ namespace Services
 {
     public interface IDiscoverService
     {
-        Task<IEnumerable<TickTackDevice>> DiscoverDevices(Action<TickTackDevice> deviceFoundCallback = null);
+        Task<IEnumerable<TickTackHub>> DiscoverHubs(Action<TickTackHub> deviceFoundCallback = null);
     }
 }

@@ -15,16 +15,16 @@ namespace Services
     {
         private const string BroadcastAddress = "239.255.42.99";
         private const string RemoteServiceName = "5321";
-        private Action<TickTackDevice> _deviceFoundCallback;
+        private Action<TickTackHub> _deviceFoundCallback;
 
 
-        public async Task<IEnumerable<TickTackDevice>> DiscoverDevices(Action<TickTackDevice> deviceFoundCallback = null)
+        public async Task<IEnumerable<TickTackHub>> DiscoverHubs(Action<TickTackHub> deviceFoundCallback = null)
         {
             _deviceFoundCallback = deviceFoundCallback;
             await ListenForTack();
             await SendTick();
             //todo: send complete list
-            return new List<TickTackDevice>().AsEnumerable();
+            return new List<TickTackHub>().AsEnumerable();
         }
 
         private async Task SendTick()
@@ -57,7 +57,7 @@ namespace Services
             var length = dataReader.UnconsumedBufferLength;
             var message = dataReader.ReadString(length);
             var guidAsString = message.Replace("TT_DEVICE_IDENTIFIER:", "").Trim();
-            _deviceFoundCallback?.Invoke(new TickTackDevice { Id = guidAsString });
+            _deviceFoundCallback?.Invoke(new TickTackHub { Id = guidAsString });
         }
     }
 }

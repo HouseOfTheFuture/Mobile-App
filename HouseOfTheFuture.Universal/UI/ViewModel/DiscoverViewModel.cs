@@ -15,14 +15,14 @@ namespace InfoSupport.TickTack.App.ViewModel
     public class DiscoverViewModel : ViewModelBase
     {
         private readonly IDiscoverService _discoverService;
-        public ObservableCollection<TickTackDevice> Devices { get; } = new ObservableCollection<TickTackDevice>();
+        public ObservableCollection<TickTackHub> Hubs { get; } = new ObservableCollection<TickTackHub>();
 
         public ICommand DiscoverDevicesCommand { get; private set; }
 
         private void DiscoverDevices()
         {
-            Devices.Clear();
-            _discoverService.DiscoverDevices(async dev => await UIThread.ExecuteAsync(() => Devices.Add(dev)));
+            Hubs.Clear();
+            _discoverService.DiscoverHubs(async dev => await UIThread.ExecuteAsync(() => Hubs.Add(dev)));
         }
 
         /// <summary>
@@ -34,10 +34,10 @@ namespace InfoSupport.TickTack.App.ViewModel
             _discoverService = discoverService;
             if (IsInDesignMode)
             {
-                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
-                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
-                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
-                Devices.Add(new TickTackDevice() { Id = Guid.NewGuid().ToString() });
+                Hubs.Add(new TickTackHub() { Id = Guid.NewGuid().ToString() });
+                Hubs.Add(new TickTackHub() { Id = Guid.NewGuid().ToString() });
+                Hubs.Add(new TickTackHub() { Id = Guid.NewGuid().ToString() });
+                Hubs.Add(new TickTackHub() { Id = Guid.NewGuid().ToString() });
             }
         }
     }

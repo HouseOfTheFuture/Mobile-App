@@ -13,7 +13,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using InfoSupport.TickTack.App.ViewModel;
-using Services;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,13 +21,13 @@ namespace InfoSupport.TickTack.App.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DiscoverView : Page
+    public sealed partial class SensorsView : Page
     {
-        public DiscoverView()
+        public SensorsView()
         {
             this.InitializeComponent();
         }
 
-        public DiscoverViewModel ViewModel => (DiscoverViewModel)DataContext;
+        public SensorsViewModel ViewModel => (SensorsViewModel) DataContext;
     }
 }

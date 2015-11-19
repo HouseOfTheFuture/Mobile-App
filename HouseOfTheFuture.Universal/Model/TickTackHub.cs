@@ -1,6 +1,6 @@
 ﻿namespace Model
 {
-    public class TickTackDevice
+    public class TickTackHub
     {
         public string Id { get; set; }
     }

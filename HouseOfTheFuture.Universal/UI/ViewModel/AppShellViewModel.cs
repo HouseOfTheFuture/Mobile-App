@@ -12,8 +12,9 @@ namespace InfoSupport.TickTack.App.ViewModel
 
         public AppShellViewModel()
         {
-            Menu.Add(new MenuItem {Glyph = "", Text = "Home", NavigationDestination = typeof (HomeView)});
-            Menu.Add(new MenuItem {Glyph = "", Text = "Discover", NavigationDestination = typeof (DiscoverView)});
+            Menu.Add(new MenuItem { Glyph = "", Text = "Home", NavigationDestination = typeof(HomeView) });
+            Menu.Add(new MenuItem { Glyph = "", Text = "Discover", NavigationDestination = typeof(DiscoverView) });
+            Menu.Add(new MenuItem { Glyph = "", Text = "Sensors", NavigationDestination = typeof(SensorsView) });
         }
 
         public ObservableCollection<MenuItem> Menu { get; } = new ObservableCollection<MenuItem>();

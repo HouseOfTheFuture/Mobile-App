@@ -108,12 +108,16 @@
     <Compile Include="ViewModel\AppShellViewModel.cs" />
     <Compile Include="ViewModel\DiscoverViewModel.cs" />
     <Compile Include="ViewModel\MenuItem.cs" />
+    <Compile Include="ViewModel\SensorsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\DiscoverView.xaml.cs">
       <DependentUpon>DiscoverView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SensorsView.xaml.cs">
+      <DependentUpon>SensorsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SensorsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -108,7 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiscoverService.cs" />
+    <Compile Include="HubService.cs" />
     <Compile Include="IDiscoverService.cs" />
+    <Compile Include="IHubService.cs" />
     <Compile Include="NetworkAdapterComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\Services.rd.xml" />
