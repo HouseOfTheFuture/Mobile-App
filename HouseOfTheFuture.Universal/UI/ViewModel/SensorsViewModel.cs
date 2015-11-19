@@ -43,12 +43,15 @@ namespace InfoSupport.TickTack.App.ViewModel
             }
         }
 
-        private void GetSensors(TickTackHub hub)
+        private async void GetSensors(TickTackHub hub)
         {
-            if (hub.Id != null)
-            {
-                Sensors.Clear();
-                _hubService.GetSensors(hub.Id, async sensor => await UIThread.ExecuteAsync(() => Sensors.Add(sensor)));
+            if (hub.Id == null) return;
+            Sensors.Clear();
+            var sensors = await _hubService.GetSensors(hub.Id);
+            //todo: replace by sensors.ForEach(Sensors.Add);
+            foreach (var sensor in sensors)
+            { 
+                Sensors.Add(sensor);
             }
         }
     }

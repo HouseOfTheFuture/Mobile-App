@@ -18,7 +18,7 @@ namespace Services
             _apiUri = new Uri(apiUri, "devices/");
         }
 
-        public async Task<IEnumerable<Sensor>> GetSensors(string hubId, Action<Sensor> sensorFoundCallback = null)
+        public async Task<IEnumerable<Sensor>> GetSensors(string hubId)
         {
             using (var client = new HttpClient())
             {

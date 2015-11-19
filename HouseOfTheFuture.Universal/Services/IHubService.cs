@@ -9,6 +9,6 @@ namespace Services
 {
     public interface IHubService
     {
-        Task<IEnumerable<Sensor>> GetSensors(string hubId, Action<Sensor> sensorFoundCallback = null);
+        Task<IEnumerable<Sensor>> GetSensors(string hubId);
     }
 }
